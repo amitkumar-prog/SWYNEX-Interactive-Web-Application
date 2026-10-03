@@ -34,8 +34,8 @@ function FeaturedEvents() {
         </h1>
       </div>
 
-      <div className="flex">
-        <div className="flex gap-2 bg-white w-fit px-4 py-2 rounded-md mx-auto">
+      <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+        <div className=" flex gap-2 bg-white w-fit px-4 py-2 rounded-md mx-auto">
           <input type="text" placeholder=" Search Event " className=" outline-none bg-transparent " value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
           <SearchIcon className="size-5 text-gray-400"/>
         </div>
@@ -43,10 +43,10 @@ function FeaturedEvents() {
          <div className="flex gap-2 bg-white w-fit px-4 py-2 rounded-md mx-auto">
           <select type="text" placeholder=" Search Event " value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}  className=" outline-none bg-transparent text-gray-400 ">
             <option value="" >Select Your Event Category</option>
-            <option value="technology" className="text-black">Technology</option>
-            <option value="workshop" className="text-black">Workshop</option>
-            <option value="cultural" className="text-black">Cultural</option>
-            <option value="sports" className="text-black">Sports</option>
+            <option value="Technology" className="text-black">Technology</option>
+            <option value="Workshop" className="text-black">Workshop</option>
+            <option value="Cultural" className="text-black">Cultural</option>
+            <option value="Sports" className="text-black">Sports</option>
           </select>
         </div>
       </div>

@@ -13,7 +13,7 @@ function Hero() {
         {/* Left Content */}
         <div className="text-center md:text-left">
 
-          <button className="bg-white/50 backdrop-blur-lg text-black px-4 sm:px-5 py-2 rounded-full font-bold mb-4 text-sm sm:text-base">
+          <button className="bg-white/50 backdrop-blur-xl text-black px-4 sm:px-5 py-2 rounded-full font-bold mb-4 text-sm sm:text-base">
             Make Every Event Memorable
           </button>
 
