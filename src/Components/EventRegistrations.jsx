@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useParams } from "react-router-dom";
 import events from "../data/events";
@@ -16,7 +16,17 @@ function EventRegistrations() {
     const selectedEventData = events.find(
         (event) => event.id === Number(id)
     );
-    console.log(selectedEventData);
+
+    useEffect(() => {
+      if (selectedEventData) {
+        setSelectedEvent(selectedEventData.category);
+      }
+    }, [selectedEventData]);
+
+   
+    
+
+
     
 
     const handleSubmit = (e) => {
@@ -54,13 +64,16 @@ function EventRegistrations() {
             setError("Please select an event");
             return;
         }
+        
 
         const registration = {
             name,
             email,
             phone,
-            event: selectedEvent,
-        }
+            event: selectedEventData ? selectedEventData.title : selectedEvent,
+            date: selectedEventData?.date,
+            location: selectedEventData?.location,
+        };
 
         const existingRegistrations = JSON.parse(localStorage.getItem("eventRegistrations")) || [];
         existingRegistrations.push(registration);
@@ -164,10 +177,10 @@ function EventRegistrations() {
               onChange = {(e)=> setSelectedEvent(e.target.value)}
             >
               <option value="">Select Event</option>
-              <option value="technology">Tech Conference 2026</option>
-              <option value="workshop">Web Development Workshop</option>
-              <option value="cultural">Garba Event 2026</option>
-              <option value="sports">SAM Football Tournament</option>
+              <option value="Technology">Tech Conference 2026</option>
+              <option value="Workshop">Web Development Workshop</option>
+              <option value="Cultural">Garba Event 2026</option>
+              <option value="Sports">SAM Football Tournament</option>
             </select>
           </div>
 

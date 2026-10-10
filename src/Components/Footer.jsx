@@ -30,11 +30,11 @@ function Footer() {
             </h3>
 
             <div className="flex flex-col gap-3 text-gray-400 text-sm">
-              <a href="#home" className="hover:text-purple-400 transition">
+              <a href="#hero" className="hover:text-purple-400 transition">
                 Home
               </a>
 
-              <a href="#events" className="hover:text-purple-400 transition">
+              <a href="#event" className="hover:text-purple-400 transition">
                 Events
               </a>
 

@@ -1,7 +1,11 @@
 import React from "react";
 import { Menu, Calendar } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
   return (
     <nav className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-black shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -50,12 +54,12 @@ function Navbar() {
         <div className="flex items-center">
 
           {/* Desktop Button */}
-          <a
-            href="#event"
+          <button
+            onClick = {() => navigate("/eventRegistrations")}
             className="hidden md:block bg-purple-600 text-white px-4 lg:px-5 py-2.5 rounded-lg hover:bg-purple-700 transition"
           >
             Register Now
-          </a>
+          </button>
 
           {/* Mobile Menu */}
           <button className="md:hidden p-1">

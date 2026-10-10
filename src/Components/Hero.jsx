@@ -33,14 +33,14 @@ function Hero() {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center md:items-start gap-4">
 
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition w-full sm:w-auto">
+            <a href="#event" className="inline-flex items-center justify-center gap-2 whitespace-nowrap bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition w-full sm:w-auto">
               <span>Explore Events</span>
               <ArrowRight className="w-5 h-5 shrink-0" />
-            </button>
+            </a>
 
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold border border-white text-black px-6 py-3 rounded-lg hover:bg-slate-200 hover:text-black transition w-full sm:w-auto">
+            <a href="#aboutUs" className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold border border-white text-black px-6 py-3 rounded-lg hover:bg-slate-200 hover:text-black transition w-full sm:w-auto">
               Learn More..
-            </button>
+            </a>
 
           </div>
         </div>
