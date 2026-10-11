@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { SearchIcon } from 'lucide-react';
 
 function Registrations() {
 
@@ -21,6 +22,24 @@ function Registrations() {
     };
 
     const handleSave = () => {
+
+        if (!editName.trim() || !editEmail.trim() || !editPhone.trim()) {
+            alert("Please fill all fields.");
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(editEmail)) {
+            alert("Please enter a valid email.");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(editPhone)) {
+            alert("Phone number must be exactly 10 digits.");
+            return;
+        }
+
         const updatedRegistrations = [...registrations];
 
         updatedRegistrations[editingIndex] = {
@@ -53,11 +72,40 @@ function Registrations() {
     );
     };
 
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredRegistrations = registrations
+    .map((registration, originalIndex) => ({
+    ...registration,
+    originalIndex,
+    }))
+    .filter((registration) =>
+            registration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            registration.event.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    
+
   return (
     <div className="p-6">
         <h1 className="text-3xl font-bold mb-6">
             Event Registrations
         </h1>
+
+        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-5">
+            <div className=" flex gap-2 bg-white w-fit px-4 py-2 rounded-md mx-auto shadow-md">
+                <input type="text" placeholder=" Search Registrations " className=" outline-none bg-transparent " value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                <SearchIcon className="size-5 text-gray-400"/>
+            </div>
+
+        </div>
+
+        <div>
+            {searchTerm && filteredRegistrations.length === 0 && (
+                <p className="text-center text-gray-500 py-6">
+                    No matching registrations found.
+                </p>
+            )}
+        </div>
 
         <div className="grid gap-4">
             {registrations.length === 0 && (
@@ -65,7 +113,7 @@ function Registrations() {
                     No registrations found.
                 </p>
             )}
-            {registrations.map((registration, index) => (
+            {filteredRegistrations.map((registration, index) => (
             <div key={index} className="bg-white p-5 rounded-xl shadow">
                 
                 <h2 className="font-bold text-xl">
@@ -123,14 +171,14 @@ function Registrations() {
                 <div className="flex items-center gap-5">
 
                     <button
-                        onClick={() => handleEdit(index)}
+                        onClick={() => handleEdit(registration.originalIndex)}
                         className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                         >
                         Edit
                     </button>
 
                     <button
-                        onClick={() => handleDelete(index)}
+                        onClick={() => handleDelete(registration.originalIndex)}
                         className="mt-3 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
                         >
                         Delete
